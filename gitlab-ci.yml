@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  AWS_ACCESS_KEY_ID: 1234
+  AWS_SECRET_ACCESS_KEY: Thdskf8889dD
+  AWS_DEFAULT_REGION: us-east-1
+  TF_WORKING_DIR: /tmp/tf/files
+
+before_script:
+  - apt-get install -y terraform
+
+build:
+  stage: build
+  script:
+    - cd /tmp/spa
+    - npm install
+    - npm run build
+
+deploy:
+  stage: deploy
+  script:
+    - terraform init $TF_WORKING_DIR
+    - terraform validate $TF_WORKING_DIR
+    - terraform plan -var-file=$TF_WORKING_DIR/terraform.tfvars -out=terraform.plan $TF_WORKING_DIR
+    - terraform apply -auto-approve terraform.plan $TF_WORKING_DIR

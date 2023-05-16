@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple SPA</title>
+  <style>
+    /* Add some basic styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    .content {
+      margin-top: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Simple SPA</h1>
+  
+  <div class="content">
+    <p>This is a simple Single-Page Application (SPA).</p>
+    <p>Click the button below to toggle the visibility of a hidden content.</p>
+    <button id="toggleBtn" class="btn">Toggle Content</button>
+    
+    <div id="hiddenContent" style="display: none;">
+      <p>This is the hidden content that will be revealed when you click the button.</p>
+    </div>
+  </div>
+  
+  <script>
+    // Add event listener to toggle button
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+      var hiddenContent = document.getElementById('hiddenContent');
+      if (hiddenContent.style.display === 'none') {
+        hiddenContent.style.display = 'block';
+      } else {
+        hiddenContent.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
